@@ -63,16 +63,16 @@
 <p>函数执行时 <code>this</code> 指向：谁调用指向谁，直接调用指向全局对象（<code>window / global</code>）</p>
 <p>应用场景：当我们想把另一个对象的值应用在当前函数中，但又不想让函数成为另一个对象的属性</p>
 <p>如下代码：</p>
-<pre class="grvsc-container solarized-light grvsc-mm-tJZ19p grvsc-ps-tJZ19p" data-language="javascript" data-index="0"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-9">function</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">Fn</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">() {</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-11">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-11">this</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">name</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-11">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-11">arguments</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
+<pre class="grvsc-container solarized-light grvsc-mm-tJZ19p grvsc-ps-tJZ19p" data-language="javascript" data-index="0"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-13 grvsc-tJZ19p-b">function</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">Fn</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">() {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">this</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">name</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">arguments</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">}</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-9">var</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">name</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&quot;Lily&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">;</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">Fn</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-7">1</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-7">2</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-7">3</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">); </span><span class="grvsc-tiaGIi-3 grvsc-tiaGIi-i grvsc-tJZ19p-5 grvsc-tJZ19p-i">// output Lily</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-9">let</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> {</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  </span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-4">name</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">: </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&quot;Jack&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">,</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-13 grvsc-tJZ19p-b">var</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">name</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-11">&quot;Lily&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">;</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">Fn</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-6">1</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-6">2</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-6">3</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">); </span><span class="grvsc-tiaGIi-3 grvsc-tiaGIi-i grvsc-tJZ19p-3 grvsc-tJZ19p-i">// output Lily</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-13 grvsc-tJZ19p-b">let</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> {</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  name: </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-11">&quot;Jack&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">,</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">};</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-11">Fn</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">apply</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, [</span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-7">1</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-7">2</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-7">3</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">]); </span><span class="grvsc-tiaGIi-3 grvsc-tiaGIi-i grvsc-tJZ19p-5 grvsc-tJZ19p-i">// output Jack</span></span></span></code></pre>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">Fn</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">apply</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, [</span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-6">1</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-6">2</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-6 grvsc-tJZ19p-6">3</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">]); </span><span class="grvsc-tiaGIi-3 grvsc-tiaGIi-i grvsc-tJZ19p-3 grvsc-tJZ19p-i">// output Jack</span></span></span></code></pre>
 <p>手写实现：</p>
 <pre class="grvsc-container solarized-light grvsc-mm-tJZ19p grvsc-ps-tJZ19p" data-language="javascript" data-index="1"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-11">Function</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-4">prototype</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">myApply</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-9">function</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> (</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-4 grvsc-tJZ19p-i">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-4 grvsc-tJZ19p-i">argArray</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">) {</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">  </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-9">if</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> (</span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">!</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">||</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-9">typeof</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">obj</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">===</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&quot;number&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">) {</span></span></span>
@@ -318,14 +318,16 @@
     color: #abb2bf;
   }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-i { font-style: italic; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-b { font-weight: bold; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-13 { color: #5C6370; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-1 { color: #ABB2BF; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-3 { color: #61AFEF; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-4 { color: #E06C75; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-8 { color: #56B6C2; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-6 { color: #98C379; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-7 { color: #D19A66; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-8 { color: #56B6C2; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-6 { color: #98C379; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-3 { color: #61AFEF; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-4 { color: #E06C75; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-5 { color: #7F848E; }
   body.dark .grvsc-ps-tJZ19p .grvsc-line-highlighted::before {
     background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));
@@ -339,14 +341,16 @@
       color: #abb2bf;
     }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-i { font-style: italic; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-b { font-weight: bold; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-13 { color: #5C6370; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-1 { color: #ABB2BF; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-3 { color: #61AFEF; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-4 { color: #E06C75; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-8 { color: #56B6C2; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-6 { color: #98C379; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-7 { color: #D19A66; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-8 { color: #56B6C2; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-6 { color: #98C379; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-3 { color: #61AFEF; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-4 { color: #E06C75; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-5 { color: #7F848E; }
     .grvsc-mm-tJZ19p .grvsc-line-highlighted::before {
       background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));

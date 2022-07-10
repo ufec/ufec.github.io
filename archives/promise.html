@@ -60,13 +60,13 @@
 <p>它允许您将处理程序与异步操作的最终成功值或失败原因相关联。这使异步方法可以像同步方法一样返回值：异步方法返回立即提供最终值的承诺，而不是立即返回最终值。</p>
 <h2 id="为什么用-promise" style="position:relative">为什么用 Promise<a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-promise" aria-label="为什么用 promise permalink" class="anchor after"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>因为 JavaScript 是单线程的，一些 I/O 操作，如网络请求，读写文件等等会使得进程阻塞，使人看起来是无响应状态，但异步操作可以弥补，可是异步操作在某些场景会使得我们得到的结果“不一致”，例如：</p>
-<pre class="grvsc-container solarized-light grvsc-mm-tJZ19p grvsc-ps-tJZ19p" data-language="javascript" data-index="0"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-9">const</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-11">fs</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-8">require</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&#x27;fs&#x27;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-11">fs</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">readFile</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&#x27;./cookie/bilibili.txt&#x27;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, (</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-4 grvsc-tJZ19p-i">err</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, </span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-4 grvsc-tJZ19p-i">data</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">)</span><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-9">=&gt;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">{</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">    </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-9">if</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> (</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">err</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">) </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-9">throw</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&quot;error&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">;</span></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">    </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-11">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-4">data</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
+<pre class="grvsc-container solarized-light grvsc-mm-tJZ19p grvsc-ps-tJZ19p" data-language="javascript" data-index="0"><code class="grvsc-code"><span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-13 grvsc-tJZ19p-b">const</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">fs</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">=</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">require</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-11">&#x27;fs&#x27;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">fs</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">readFile</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-11">&#x27;./cookie/bilibili.txt&#x27;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">, (err, data)</span><span class="grvsc-tiaGIi-13 grvsc-tiaGIi-b grvsc-tJZ19p-13 grvsc-tJZ19p-b">=&gt;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">{</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">    </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">if</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> (</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">err</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">) </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">throw</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1"> </span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-11">&quot;error&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">;</span></span></span>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">    </span><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">data</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">});</span></span></span>
 <span class="grvsc-line"><span class="grvsc-source"></span></span>
-<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-11">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-3">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-6">&quot;假如此处是需要等待读取文件完成后才要执行的操作&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span></code></pre>
+<span class="grvsc-line"><span class="grvsc-source"><span class="grvsc-tiaGIi-8 grvsc-tJZ19p-8">console</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">.</span><span class="grvsc-tiaGIi-7 grvsc-tJZ19p-7">log</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">(</span><span class="grvsc-tiaGIi-11 grvsc-tJZ19p-11">&quot;假如此处是需要等待读取文件完成后才要执行的操作&quot;</span><span class="grvsc-tiaGIi-1 grvsc-tJZ19p-1">);</span></span></span></code></pre>
 <p>结果：</p>
 <p><img src="https://my-static.ufec.cn/blog/2020/05/readfile-4718c7726aab47759c2c1c42626f8c41.webp" alt="readfile.webp"/></p>
 <p>当然一般读一些必要文件(如 cookie、配置文件)之类的，用同步可能更好，这里只是做异步操作演示，这使得我们的代码看起来好像不是按照“顺序结构”执行，直接这么用，就会出问题。
@@ -223,14 +223,15 @@ main 函数和 refresh_token 函数均返回一个 Promise，将成功和失败�
     color: #abb2bf;
   }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-i { font-style: italic; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-b { font-weight: bold; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-13 { color: #5C6370; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-1 { color: #ABB2BF; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-7 { color: #D19A66; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-8 { color: #56B6C2; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-6 { color: #98C379; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
+  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-3 { color: #61AFEF; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-4 { color: #E06C75; }
-  body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-7 { color: #D19A66; }
   body.dark .grvsc-ps-tJZ19p .grvsc-tJZ19p-5 { color: #7F848E; }
   body.dark .grvsc-ps-tJZ19p .grvsc-line-highlighted::before {
     background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));
@@ -244,14 +245,15 @@ main 函数和 refresh_token 函数均返回一个 Promise，将成功和失败�
       color: #abb2bf;
     }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-i { font-style: italic; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-b { font-weight: bold; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-13 { color: #5C6370; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-1 { color: #ABB2BF; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-7 { color: #D19A66; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-8 { color: #56B6C2; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-6 { color: #98C379; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-11 { color: #E5C07B; }
+    .grvsc-mm-tJZ19p .grvsc-tJZ19p-9 { color: #C678DD; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-3 { color: #61AFEF; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-4 { color: #E06C75; }
-    .grvsc-mm-tJZ19p .grvsc-tJZ19p-7 { color: #D19A66; }
     .grvsc-mm-tJZ19p .grvsc-tJZ19p-5 { color: #7F848E; }
     .grvsc-mm-tJZ19p .grvsc-line-highlighted::before {
       background-color: var(--grvsc-line-highlighted-background-color, rgba(255, 255, 255, 0.1));
